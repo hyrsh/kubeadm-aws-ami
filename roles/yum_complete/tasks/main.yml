@@ -1,0 +1,4 @@
+- name: yum completion after deinstallation
+  shell: yum-complete-transaction
+  args:
+    executable: /bin/bash

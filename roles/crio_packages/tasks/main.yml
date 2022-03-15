@@ -1,0 +1,8 @@
+- name: Install CRI-O packages
+  yum:
+    name:
+      - container-selinux
+      - runc
+      - cri-o
+      - cri-tools
+    state: present

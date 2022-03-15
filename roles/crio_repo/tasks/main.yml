@@ -1,7 +1,6 @@
 - name: Add CRI-O repo
   yum_repository:
     name: "CRI-O"
-    type: rpm-md
     description: "CRI-O Repository"
     baseurl: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ crio_ver }}/CentOS_7/"
     gpgcheck: yes
@@ -10,10 +9,17 @@
 
 - name: Add upstream container repo
   yum_repository:
-    name: "Upstream Containers"
-    type: rpm-md
+    name: "UpstreamContainers"
     description: "CRI-O Repository"
     baseurl: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/"
     gpgcheck: yes
     gpgkey: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/repodata/repomd.xml.key"
+    enabled: yes
+
+- name: Add CentOS 7 repo
+  yum_repository:
+    name: "CentOS7"
+    description: "CentOS 7 Extras"
+    baseurl: "http://mirror.centos.org/centos/7/extras/x86_64/"
+    gpgcheck: no
     enabled: yes

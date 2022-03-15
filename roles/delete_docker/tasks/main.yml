@@ -1,0 +1,4 @@
+- name: Remove Docker
+  yum:
+    name: docker
+    state: absent

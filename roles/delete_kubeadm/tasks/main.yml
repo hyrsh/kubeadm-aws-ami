@@ -5,10 +5,9 @@
 
 - name: Remove installed packages
   yum:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - wget
-    - kubelet
-    - kubeadm
-    - kubectl
+    name:
+      - wget
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: absent

@@ -1,4 +1,8 @@
 - hosts: local
   gather_facts: True
+  become: yes
   roles:
-    - test
+    - lx_sys_config
+    - kubeadm_repo
+    - kubeadm_packages
+    - docker_install

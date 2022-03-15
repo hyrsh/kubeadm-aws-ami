@@ -5,5 +5,19 @@
 
 - name: Delete Upstream repo
   yum_repository:
-    name: "Upstream Containers"
+    name: "UpstreamContainers"
+    state: absent
+
+- name: Delete CentOS7 repo
+  yum_repository:
+    name: "CentOS7"
+    state: absent
+
+- name: Delete CRI-O packages
+  yum:
+    name:
+      - container-selinux
+      - runc
+      - cri-o
+      - cri-tools
     state: absent

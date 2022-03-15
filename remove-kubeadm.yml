@@ -1,4 +1,7 @@
 - hosts: local
   gather_facts: True
+  become: yes
   roles:
     - delete_kubeadm
+    - delete_docker
+    - yum_complete
