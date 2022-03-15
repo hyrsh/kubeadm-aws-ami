@@ -1,0 +1,4 @@
+- hosts: local
+  gather_facts: True
+  roles:
+    - test

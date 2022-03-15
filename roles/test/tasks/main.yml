@@ -1,0 +1,4 @@
+- name: test
+  debug:
+    msg:
+      - "Hi from Test"

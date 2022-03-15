@@ -1,0 +1,9 @@
+- name: Delete CRI-O repo
+  yum_repository:
+    name: "CRI-O"
+    state: absent
+
+- name: Delete Upstream repo
+  yum_repository:
+    name: "Upstream Containers"
+    state: absent

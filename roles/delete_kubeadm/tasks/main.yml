@@ -1,0 +1,14 @@
+- name: Remove Kubernetes Repo
+  yum_repository:
+    name: Kubernetes
+    state: absent
+
+- name: Remove installed packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - wget
+    - kubelet
+    - kubeadm
+    - kubectl

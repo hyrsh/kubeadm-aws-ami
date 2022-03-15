@@ -1,0 +1,41 @@
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
+- name: Disable SWAP
+  debug:
+    msg: "The AMI has no swap enabled but this would be the place to do so."
+
+- name: Load kernel modules (overlay)
+  modprobe:
+    name: overlay
+    state: present
+
+- name: Load kernel modules (netfilter)
+  modprobe:
+    name: br_netfilter
+    state: present
+
+- name: Adjust sysctl (ip6tables)
+  sysctl:
+    name: net.bridge.bridge-nf-call-ip6tables
+    value: '1'
+    sysctl_set: yes
+    state: present
+    reload: yes
+
+- name: Adjust sysctl (iptables)
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: '1'
+    sysctl_set: yes
+    state: present
+    reload: yes
+
+- name: Adjust sysctl (ip forward)
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: yes
+    state: present
+    reload: yes
