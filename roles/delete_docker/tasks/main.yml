@@ -1,4 +1,7 @@
 - name: Remove Docker
   yum:
-    name: docker
+    name:
+      - docker
+      - containerd
+      - runc
     state: absent

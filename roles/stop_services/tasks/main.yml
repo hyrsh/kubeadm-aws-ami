@@ -1,0 +1,11 @@
+- name: Stop kubelet
+  systemd:
+    name: kubelet
+    state: stopped
+    enabled: no
+
+- name: Stop Docker
+  systemd:
+    name: docker
+    state: stopped
+    enabled: no
