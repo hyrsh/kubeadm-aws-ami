@@ -2,6 +2,12 @@
   selinux:
     state: disabled
 
+- name: Disable firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+
 - name: Disable SWAP
   debug:
     msg: "The AMI has no swap enabled but this would be the place to do so."

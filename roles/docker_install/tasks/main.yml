@@ -2,3 +2,32 @@
   shell: amazon-linux-extras install docker -y
   args:
     executable: /bin/bash
+
+- name: Create external Docker storage directory
+  file:
+    state: directory
+    path: "{{ docker_ext_storage }}"
+
+- name: Stop Docker if started
+  systemd:
+    name: docker
+    state: stopped
+    enabled: no
+  ignore_errors: yes
+
+- name: Get custom template config to dir
+  template:
+    src: templates/docker.j2
+    dest: /etc/sysconfig/docker
+
+- name: Remove default directory
+  file:
+    state: absent
+    path: /var/lib/docker
+
+- name: Start Docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+    daemon_reload: yes

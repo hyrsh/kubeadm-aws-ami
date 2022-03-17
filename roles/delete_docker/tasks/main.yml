@@ -1,7 +1,20 @@
-- name: Remove Docker
+- name: Remove custom config
+  file:
+    state: absent
+    path: /etc/sysconfig/docker
+
+- name: Remove Dockeri
   yum:
     name:
       - docker
       - containerd
       - runc
     state: absent
+
+- name: Remove directories
+  file:
+    state: absent
+    path: "{{ item }}"
+  with_items:
+    - /var/lib/docker
+    - "{{ docker_ext_storage }}"

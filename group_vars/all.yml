@@ -1,2 +1,5 @@
 #CRI-O Settings
 crio_ver: "1.22"
+
+#Docker external storage dir
+docker_ext_storage: /opt/ext-storage/docker

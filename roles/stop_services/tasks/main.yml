@@ -3,9 +3,15 @@
     name: kubelet
     state: stopped
     enabled: no
+  ignore_errors: yes
 
 - name: Stop Docker
   systemd:
     name: docker
     state: stopped
     enabled: no
+  ignore_errors: yes
+
+- name: Relaod daemon
+  systemd:
+    daemon_reload: yes
