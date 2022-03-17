@@ -9,3 +9,11 @@
       - kubeadm
       - kubectl
     state: present
+
+- name: Prevent preflight warning with kubeadm init
+  systemd:
+    name: kubelet
+    state: stopped
+    enabled: yes
+    daemon_reload: yes
+  ignore_errors: yes

@@ -3,7 +3,7 @@
     state: absent
     path: /etc/sysconfig/docker
 
-- name: Remove Dockeri
+- name: Remove Docker
   yum:
     name:
       - docker

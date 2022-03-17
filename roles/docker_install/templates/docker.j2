@@ -6,7 +6,7 @@ DAEMON_MAXFILES=1048576
 # Additional startup options for the Docker daemon, for example:
 # OPTIONS="--ip-forward=true --iptables=true"
 # By default we limit the number of open files per container
-OPTIONS="--default-ulimit nofile=32768:65536 -g {{ docker_ext_storage }}"
+OPTIONS="--default-ulimit nofile=32768:65536 -g {{ docker_ext_storage }} --exec-opt native.cgroupdriver=systemd"
 
 # How many seconds the sysvinit script waits for the pidfile to appear
 # when starting the daemon.

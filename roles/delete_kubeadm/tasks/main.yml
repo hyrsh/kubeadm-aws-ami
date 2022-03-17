@@ -3,6 +3,14 @@
     name: Kubernetes
     state: absent
 
+- name: KubeADM internal remove
+  shell: kubeadm reset --force
+
+- name: Remove CNI binaries
+  file:
+    state: absent
+    path: /etc/cni/net.d
+
 - name: Remove installed packages
   yum:
     name:
