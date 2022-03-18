@@ -1,0 +1,14 @@
+- name: Init KubeADM
+  shell: kubeadm init
+  args:
+    executable: /bin/bash
+
+- name: Create kubeconfig directory
+  file:
+    state: directory
+    path: /root/.kube
+
+- name: Copy admin config
+  copy:
+    src: /etc/kubernetes/admin.conf
+    dest: /root/.kube/config

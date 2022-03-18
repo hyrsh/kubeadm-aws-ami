@@ -6,3 +6,5 @@
     - kubeadm_repo
     - kubeadm_packages
     - docker_install
+    - kubeadm_init
+    - network_init

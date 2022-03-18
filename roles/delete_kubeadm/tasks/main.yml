@@ -6,10 +6,14 @@
 - name: KubeADM internal remove
   shell: kubeadm reset --force
 
-- name: Remove CNI binaries
+- name: Remove custom directories
   file:
     state: absent
-    path: /etc/cni/net.d
+    path: "{{ item }}"
+  with_items:
+    - /root/.kube
+    - /etc/cni/net.d
+    - /etc/kubernetes
 
 - name: Remove installed packages
   yum:

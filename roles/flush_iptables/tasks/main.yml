@@ -1,0 +1,9 @@
+- name: Flush all chains
+  shell: iptables -F
+  args:
+    executable: /bin/bash
+
+- name: Delete all custom entries
+  shell: iptables -X
+  args:
+    executable: /bin/bash

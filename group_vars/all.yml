@@ -3,3 +3,6 @@ crio_ver: "1.22"
 
 #Docker external storage dir
 docker_ext_storage: /opt/ext-storage/docker
+
+#Network (we only have weave for now ... more coming)
+network_plugin: "weave"

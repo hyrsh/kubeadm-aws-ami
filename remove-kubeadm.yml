@@ -6,3 +6,4 @@
     - delete_kubeadm
     - delete_docker
     - yum_complete
+    - flush_iptables
