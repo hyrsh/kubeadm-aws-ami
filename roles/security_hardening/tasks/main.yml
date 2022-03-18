@@ -39,3 +39,16 @@
     src: /root/fail2ban-eval/show-attacler.sh
     dest: /usr/sbin/attacker
     state: link
+
+- name: Copy global profile settings
+  copy:
+    src: "files/{{ item }}"
+    dest: "/etc/profile.d/{{ item }}"
+  with_items:
+    - disable-history.sh
+    - user-session-tmout.sh
+
+- name: Remove old history of ec2-user
+  file:
+    state: absent
+    path: /home/ec2-user/.bash_history
