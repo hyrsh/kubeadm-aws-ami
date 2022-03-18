@@ -1,0 +1,41 @@
+- name: Install Fail2Ban
+  yum:
+    name: fail2ban
+    state: present
+
+- name: Copy config
+  copy:
+    src: files/jail.local
+    dest: /etc/fail2ban/jail.local
+
+- name: Start Fail2Ban
+  systemd:
+    name: fail2ban
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+- name: Create obeserver directories
+  file:
+    state: directory
+    path: /root/fail2ban-eval/logs
+
+- name: Copy observer scripts
+  copy:
+    src: "files/{{ item }}"
+    dest: "/root/fail2ban-eval/{{ item }}"
+  with_items:
+    - list-ban-ips.sh
+    - show-attacker.sh
+
+- name: Install crontab
+  cron:
+    name: f2b-observer
+    minute: "*/5"
+    job: "/root/fail2ban-eval/list-ban-ips.sh"
+
+- name: Symlink attacker output
+  file:
+    src: /root/fail2ban-eval/show-attacler.sh
+    dest: /usr/sbin/attacker
+    state: link
