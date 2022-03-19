@@ -8,3 +8,4 @@
     - docker_install
     - kubeadm_init
     - network_init
+    - kubectl_cmds

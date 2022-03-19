@@ -1,0 +1,4 @@
+- name: Untaint master node
+  shell: "kubectl taint node {{ ansible_facts.fqdn }} node-role.kubernetes.io/master-"
+  args:
+    executable: /bin/bash
