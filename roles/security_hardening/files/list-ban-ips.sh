@@ -33,6 +33,12 @@ for IP in $(cat $f2b | grep "NOTICE" | grep -vE "Unban|Flush|Restore" | awk '{pr
      #mv $lg $lgp/archive_${time}.log
      rm -rf $lg
      touch $lg
+     if [ $(ls -la $lgp | grep "archive" | wc -l) -gt 50 ]; then
+       cat $lgp/archive* | sort -n | sort -u > $lgp/consolidated_${time}.log
+       for F in $(ls -la $lgp | grep "archive" | awk '{print $NF}'); do
+         rm -rf $lgp/$F
+       done
+     fi
    fi
    
 
