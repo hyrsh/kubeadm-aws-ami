@@ -24,6 +24,7 @@
   copy:
     src: "files/{{ item }}"
     dest: "/root/fail2ban-eval/{{ item }}"
+    mode: 0755
   with_items:
     - list-ban-ips.sh
     - show-attacker.sh
@@ -36,7 +37,7 @@
 
 - name: Symlink attacker output
   file:
-    src: /root/fail2ban-eval/show-attacler.sh
+    src: /root/fail2ban-eval/show-attacker.sh
     dest: /usr/sbin/attacker
     state: link
 
@@ -44,6 +45,7 @@
   copy:
     src: "files/{{ item }}"
     dest: "/etc/profile.d/{{ item }}"
+    mode: 0555
   with_items:
     - disable-history.sh
     - user-session-tmout.sh

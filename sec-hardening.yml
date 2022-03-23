@@ -1,3 +1,4 @@
 - hosts: local
+  become: yes
   roles:
     - security_hardening
