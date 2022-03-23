@@ -29,6 +29,14 @@ You can now use your single-node cluster of Kubernetes.
 
 You can also use docker on your machine.
 
+## How to reset
+
+At any point in time you can reset your installation by running 02\_remove.sh
+
+It does reset all saved docker images and all kubeadm installations.
+
+It does not reset your fail2ban or SSH settings.
+
 ## Please note
 
 The fact that we change our ssh port to 20234 means that you CANNOT ssh to your EC2 instance on port 22 anymore; use port 20234.
