@@ -1,9 +1,0 @@
-- hosts: local
-  gather_facts: True
-  become: yes
-  roles:
-    - stop_services
-    - delete_kubeadm
-    - delete_docker
-    - yum_complete
-    - flush_iptables
