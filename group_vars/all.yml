@@ -1,3 +1,6 @@
+#Ansible SSH port (local group)
+ansible_ssh_port: 20234
+
 #CRI-O Settings
 crio_ver: "1.22"
 

@@ -10,6 +10,8 @@ Spawn a fresh AWS Linux (AMI) VM (aka EC2 instance) and set a security group to 
 
 To avoid SSH crawler/bots we change our SSH port to 20234 (port 22 is just for our initial connection).
 
+You can change this port in group\_vars/all.yml
+
 Step-by-step:
 - ssh into your ec2 instance (from your local machine or whatever)
 - sudo -i
