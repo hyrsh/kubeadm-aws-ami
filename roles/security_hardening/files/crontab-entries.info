@@ -1,0 +1,2 @@
+#Evaluate fail2ban entries
+*/30 * * * * /root/fail2ban-eval/list-ban-ips.sh

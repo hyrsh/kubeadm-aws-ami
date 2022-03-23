@@ -31,7 +31,7 @@
 - name: Install crontab
   cron:
     name: f2b-observer
-    minute: "*/5"
+    minute: "*/30"
     job: "/root/fail2ban-eval/list-ban-ips.sh"
 
 - name: Symlink attacker output
