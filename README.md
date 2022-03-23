@@ -14,13 +14,9 @@ Step-by-step:
 - ssh into your ec2 instance (from your local machine or whatever)
 - sudo -i
 - yum install git -y
-- mkdir git-repos
-- cd git-repos
-- git clone https://github.com/hyrsh/kubeadm-aws-ami.git
-- cd kubeadm-aws-ami
-- ./init.sh
-- ansible-playbook sec-hardening.yml _(basic fail2ban for ssh and a cronjob for its logging)_
-- ansible-playbook install-kubeadm.yml
+- mkdir git-repos && cd git-repos
+- git clone https://github.com/hyrsh/kubeadm-aws-ami.git && cd kubeadm-aws-ami
+- ./01\_install.sh
 
 ## How to check
 

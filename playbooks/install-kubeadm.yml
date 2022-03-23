@@ -1,0 +1,11 @@
+- hosts: local
+  gather_facts: True
+  become: yes
+  roles:
+    - lx_sys_config
+    - kubeadm_repo
+    - kubeadm_packages
+    - docker_install
+    - kubeadm_init
+    - network_init
+    - kubectl_cmds
