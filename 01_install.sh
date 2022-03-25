@@ -29,7 +29,7 @@ else
 
   yum update -y
 
-  ansible-playbook ./playbooks/sec-hardening.yml
+  ansible-playbook sec-hardening.yml
 
   echo "[local]" > /etc/ansible/hosts
   echo "localhost ansible_ssh_private_key_file=/home/ec2-user/.ssh/id_rsa ansible_user=ec2-user ansible_port=$asshp" >> /etc/ansible/hosts
@@ -51,4 +51,4 @@ else
   echo "locked" > ./group_vars/init_lock
 fi
 
-ansible-playbook ./playbooks/install-kubeadm.yml
+ansible-playbook install-kubeadm.yml
