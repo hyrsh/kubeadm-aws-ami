@@ -1,24 +1,14 @@
 - name: Disable SELinux
-  shell: if [ "$(getenforce)" != "Disabled" ]; then setenforce 0; fi
-  args:
-    executable: /bin/bash
-
-- name: get firewalld state
-  shell: which firewalld; echo $?
-  args:
-    executable: /bin/bash
-  register: fwd_ret
+  debug:
+    msg: "The AMI has no SELINUX enabled but this would be the place to do so."
 
 - name: Disable firewalld
-  systemd:
-    name: firewalld
-    state: stopped
-    enabled: no
-  when: fwd_ret == 0
+  debug:
+    msg: "The AMI has no FIREWALLD enabled but this would be the place to do so."
 
 - name: Disable SWAP
   debug:
-    msg: "The AMI has no swap enabled but this would be the place to do so."
+    msg: "The AMI has no SWAP enabled but this would be the place to do so."
 
 - name: Load kernel modules (overlay)
   modprobe:

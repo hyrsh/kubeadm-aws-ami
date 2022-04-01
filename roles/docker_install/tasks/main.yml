@@ -1,4 +1,4 @@
-- name: God I hate AMI Linux, I want CRI-O
+- name: Actually I want CRI-O, docker is out
   shell: amazon-linux-extras install docker -y
   args:
     executable: /bin/bash
