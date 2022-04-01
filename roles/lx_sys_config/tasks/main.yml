@@ -1,12 +1,20 @@
 - name: Disable SELinux
-  selinux:
-    state: disabled
+  shell: if [ "$(getenforce)" != "Disabled" ]; then setenforce 0; fi
+  args:
+    executable: /bin/bash
+
+- name: get firewalld state
+  shell: which firewalld; echo $?
+  args:
+    executable: /bin/bash
+  register: fwd_ret
 
 - name: Disable firewalld
   systemd:
     name: firewalld
     state: stopped
     enabled: no
+  when: fwd_ret == 0
 
 - name: Disable SWAP
   debug:
