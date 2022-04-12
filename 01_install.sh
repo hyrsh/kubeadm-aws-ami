@@ -35,17 +35,10 @@ else
 
   yum update -y
 
-  #yum lock cooldown
-  sleep 2
-
-  #first run then overwrite with actual port
-  echo "[local]" > /etc/ansible/hosts
-  echo "localhost ansible_ssh_private_key_file=/home/ec2-user/.ssh/id_rsa ansible_user=ec2-user" >> /etc/ansible/hosts
-
-  ansible-playbook sec-hardening.yml
-
   echo "[local]" > /etc/ansible/hosts
   echo "localhost ansible_ssh_private_key_file=/home/ec2-user/.ssh/id_rsa ansible_user=ec2-user ansible_port=$asshp" >> /etc/ansible/hosts
+  
+  ansible-playbook sec-hardening.yml
 
   echo -e "\e[36;1m"
   echo -e "For your overview:"
@@ -62,6 +55,7 @@ else
   echo -e "\e[0;0m"
 
   echo "locked" > ./group_vars/init_lock
+  echo "group_vars/init_lock" > .gitignore
 fi
 
 ansible-playbook install-kubeadm.yml
