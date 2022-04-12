@@ -25,9 +25,22 @@ else
 
   amazon-linux-extras install ansible2 -y
 
+  #yum lock cooldown
+  sleep 2
+
   amazon-linux-extras install epel -y
 
+  #yum lock cooldown
+  sleep 2
+
   yum update -y
+
+  #yum lock cooldown
+  sleep 2
+
+  #first run then overwrite with actual port
+  echo "[local]" > /etc/ansible/hosts
+  echo "localhost ansible_ssh_private_key_file=/home/ec2-user/.ssh/id_rsa ansible_user=ec2-user" >> /etc/ansible/hosts
 
   ansible-playbook sec-hardening.yml
 
