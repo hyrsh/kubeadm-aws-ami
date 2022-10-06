@@ -31,22 +31,22 @@ You can also use docker on your machine.
 
 ## Plugins
 
-Ingress Controller:
+#### Ingress Controller:
 - create the ingress and class with
   - kubectl apply -f plugins/ingress-controller
 
-Ingress Generator:
+#### Ingress Generator:
 - create a custom ingress object with
-  - ./create-ing-object.sh mynamespace myurl k8s-service k8s-service-port
+  - ./create-ing-object.sh <mynamespace> <myurl> <k8s-service> <k8s-service-port>
 
-Kubernetes Dashboard (your URL is https://k8s-dashboard.aws.io, if you want to access it via Ingress):
+#### Kubernetes Dashboard (your URL is https://k8s-dashboard.aws.io, if you want to access it via Ingress):
 - create the kubernetes dashboard
   - kubectl apply -f plugins/k8s-dashboard
   - kubectl apply -f plugins/metrics-server
 
-Secret Generator:
+#### Secret Generator:
 - create a service account token as secret (important from v1.24+) with infinite validity (be aware of that; you can change it any time)
-  - ./create-api-secret.sh mynamespace myserviceaccount
+  - ./create-api-secret.sh <mynamespace> <myserviceaccount>
 
 ## How to reset
 
