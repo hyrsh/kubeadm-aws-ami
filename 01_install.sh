@@ -23,6 +23,8 @@ else
 
   cat /home/ec2-user/.ssh/id_rsa.pub >> /home/ec2-user/.ssh/authorized_keys
 
+  ssh-keyscan -p 20234 localhost >> /home/ec2-user/.ssh/known_hosts
+
   amazon-linux-extras install ansible2 -y
 
   #yum lock cooldown
