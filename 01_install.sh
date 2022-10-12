@@ -23,7 +23,10 @@ else
 
   cat /home/ec2-user/.ssh/id_rsa.pub >> /home/ec2-user/.ssh/authorized_keys
 
+  #known hosts for ec2 user
   ssh-keyscan -p 20234 localhost >> /home/ec2-user/.ssh/known_hosts
+  #known hosts for root user
+  ssh-keyscan -p 20234 localhost >> /root/.ssh/known_hosts
 
   amazon-linux-extras install ansible2 -y
 
